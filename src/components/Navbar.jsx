@@ -1,6 +1,8 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 
+//routes have already been made, navbar allows user to navigate through those routes
+
 const Navbar = () => {
   return (
     <header className='header'>
