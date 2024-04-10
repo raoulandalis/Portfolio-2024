@@ -10,6 +10,7 @@ import City from '../models/City'
 //all 3d scenes and lights are rendered within the Canvas component
 //suspense is a wrapper that displays a "fallback" that will display until the children are finished loading
 //download glb gile from sketchfab -> gltf.pmnd.rs (converts glb files to react three components)
+//install react spring which works in conjuction with threejs to animate models
 const Home = () => {
   return (
     <section className='w-full h-screen relative'>
