@@ -8,17 +8,15 @@ Title: A Mysterious Adventure - 3D Editor Challenge
 
 import React, { useRef, useEffect } from 'react'
 import { useGLTF, useAnimations } from '@react-three/drei'
-import {useFrame, useThree} from '@react-three/fiber'
-import {a} from '@react-spring/three'
+import { useFrame, useThree } from '@react-three/fiber'
+import { a } from '@react-spring/three'
 
 import cityScene from '../assets_city/a_mysterious_adventure_-_3d_editor_challenge.glb'
 
 const City = (props) => {
     const cityRef = useRef()
-    const { nodes, materials, animations } = useGLTF(
-        '/a_mysterious_adventure_-_3d_editor_challenge.glb'
-    )
-    const { actions } = useAnimations(animations, group)
+    const { nodes, materials, animations } = useGLTF(cityScene)
+    const { actions } = useAnimations(animations, cityRef)
     return (
         <a.group ref={cityRef} {...props}>
             <group name="Sketchfab_Scene">

@@ -1,6 +1,8 @@
 import { Suspense } from 'react'
 import { Canvas, useLoader } from '@react-three/fiber'
 import Loader from '../components/Loader'
+
+import City from '../models/City'
 {/* <div className='absolute top-28 left-0 right-0 z-10 flex items-center justify-center'>
         POPUP
       </div> */}
@@ -21,6 +23,8 @@ const Home = () => {
           <pointLight/>
           <spotLight/>
           <hemisphereLight/>
+
+          <City />
         </Suspense>
       </Canvas>
     </section>
