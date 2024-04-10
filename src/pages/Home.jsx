@@ -12,6 +12,23 @@ import City from '../models/City'
 //download glb gile from sketchfab -> gltf.pmnd.rs (converts glb files to react three components)
 //install react spring which works in conjuction with threejs to animate models
 const Home = () => {
+
+  const adjustCityForScreenSize = () => {
+    let screenScale = null
+    let screenPosition = [-20, -6.5, -400]
+    let rotation = [0.1, 4.7, 0]
+
+    if (window.innerWidth < 768) {
+      screenScale = [0.9, 0.9, 0.9];
+    } else {
+      screenScale = [1, 1, 1];
+    }
+
+    return [screenScale, screenPosition, rotation]
+  }
+
+  const [cityScale, cityPosition, cityRotation] = adjustCityForScreenSize();
+
   return (
     <section className='w-full h-screen relative'>
       <Canvas
@@ -25,7 +42,11 @@ const Home = () => {
           <spotLight/>
           <hemisphereLight/>
 
-          <City />
+          <City
+            position={cityPosition}
+            scale={cityScale}
+            rotation ={cityRotation}
+          />
         </Suspense>
       </Canvas>
     </section>
