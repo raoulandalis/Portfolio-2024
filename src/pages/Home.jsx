@@ -36,10 +36,9 @@ const Home = () => {
         camera={{ near: 0.1, far: 1000 }}
       >
         <Suspense fallback={<Loader />}>
-          <directionalLight/>
-          <ambientLight/>
-          <pointLight/>
-          <spotLight/>
+          <directionalLight position={[1, 1, 1]} intensity={0}/>
+          <ambientLight intensity={0.5}/>
+          <spotLight />
           <hemisphereLight/>
 
           <City
