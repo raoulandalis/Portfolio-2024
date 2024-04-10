@@ -32,14 +32,13 @@ const Home = () => {
   return (
     <section className='w-full h-screen relative'>
       <Canvas
-        className='w-full h-screen relative bg-transparent'
+        className='w-full h-screen relative bg-black'
         camera={{ near: 0.1, far: 1000 }}
       >
         <Suspense fallback={<Loader />}>
           <directionalLight position={[1, 1, 1]} intensity={0}/>
           <ambientLight intensity={0.5}/>
-          <spotLight />
-          <hemisphereLight/>
+          <hemisphereLight skyColor='#b1e1ff' groundColor='#00000' intensity={1}/>
 
           <City
             position={cityPosition}
