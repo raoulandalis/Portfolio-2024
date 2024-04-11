@@ -1,4 +1,4 @@
-import { Suspense } from 'react'
+import { useState, Suspense } from 'react'
 import { Canvas, useLoader } from '@react-three/fiber'
 import Loader from '../components/Loader'
 
@@ -12,6 +12,8 @@ import City from '../models/City'
 //download glb gile from sketchfab -> gltf.pmnd.rs (converts glb files to react three components)
 //install react spring which works in conjuction with threejs to animate models
 const Home = () => {
+
+  const { isRotating, setIsRotating } = useState(false)
 
   const adjustCityForScreenSize = () => {
     let screenScale = null
@@ -32,18 +34,20 @@ const Home = () => {
   return (
     <section className='w-full h-screen relative'>
       <Canvas
-        className='w-full h-screen relative bg-black'
+        className={`w-full h-screen relative bg-black ${isRotating ? 'cursor-grabbing' : 'cursor-grab'}`}
         camera={{ near: 0.1, far: 1000 }}
       >
         <Suspense fallback={<Loader />}>
-          <directionalLight position={[1, 1, 1]} intensity={0}/>
-          <ambientLight intensity={0.5}/>
-          <hemisphereLight skyColor='#b1e1ff' groundColor='#00000' intensity={1}/>
+          <directionalLight position={[1, 1, 1]} intensity={0} />
+          <ambientLight intensity={0.5} />
+          <hemisphereLight skyColor='#b1e1ff' groundColor='#00000' intensity={1} />
 
           <City
             position={cityPosition}
             scale={cityScale}
-            rotation ={cityRotation}
+            rotation={cityRotation}
+            isRotating={isRotating}
+            setIsRotating={setIsRotating}
           />
         </Suspense>
       </Canvas>

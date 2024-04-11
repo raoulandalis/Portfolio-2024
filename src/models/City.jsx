@@ -13,10 +13,16 @@ import { a } from '@react-spring/three'
 
 import cityScene from '../assets_city/a_mysterious_adventure_-_3d_editor_challenge.glb'
 
-const City = (props) => {
+const City = ({isRotating, setIsRotating, ...props}) => {
     const cityRef = useRef()
+
+    const {gl, viewport} = useThree()
     const { nodes, materials, animations } = useGLTF(cityScene)
     const { actions } = useAnimations(animations, cityRef)
+
+    const lastX = useRef(0)
+    const rotationSpeed = useRef(0)
+    const dampingFactor = 0.95
     return (
         <a.group ref={cityRef} {...props}>
             <group name="Sketchfab_Scene">
