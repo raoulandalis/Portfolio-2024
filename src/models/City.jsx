@@ -13,16 +13,62 @@ import { a } from '@react-spring/three'
 
 import cityScene from '../assets_city/a_mysterious_adventure_-_3d_editor_challenge.glb'
 
-const City = ({isRotating, setIsRotating, ...props}) => {
+const City = ({ isRotating, setIsRotating, ...props }) => {
     const cityRef = useRef()
 
-    const {gl, viewport} = useThree()
+    const { gl, viewport } = useThree()
     const { nodes, materials, animations } = useGLTF(cityScene)
     const { actions } = useAnimations(animations, cityRef)
 
     const lastX = useRef(0)
     const rotationSpeed = useRef(0)
     const dampingFactor = 0.95
+
+    const handlePointerDown = (e) => {
+        e.stopPropogation();
+        e.preventDefault();
+        setIsRotating(true);
+
+        const clientX = e.touches ? e.touches[0].clientX : ee.clientX;
+
+        lastX.current = clientX;
+    }
+
+    const handlePointerUp = (e) => {
+        e.stopPropogation();
+        e.preventDefault();
+        setIsRotating(false);
+
+        const clientX = e.touches ? e.touches[0].clientX : ee.clientX;
+
+        const delta = (clientX - lastX.current) / viewport.width
+
+        cityRef.current.rotation.y += delta * 0.01 * Math.PI;
+        lastX.current = clientX;
+        rotationSpeed.current = delta * 0.01 * Math.PI;
+    }
+
+    const handlePointerMove = (e) => {
+        e.stopPropogation();
+        e.preventDefault();
+
+        if(isRotating) {
+            handlePointerUp(e)
+        }
+    }
+
+    useEffect(() => {
+        document.addEventListener('pointerdown', handlePointerDown)
+        document.addEventListener('pointerup', handlePointerUp)
+        document.addEventListener('pointermove', handlePointerMove)
+
+        return () => {
+            document.addEventListener('pointerdown', handlePointerDown)
+            document.addEventListener('pointerup', handlePointerUp)
+            document.addEventListener('pointermove', handlePointerMove)
+        }
+    }, [gl, handlePointerDown, handlePointerUp, handlePointerMove])
+
     return (
         <a.group ref={cityRef} {...props}>
             <group name="Sketchfab_Scene">
