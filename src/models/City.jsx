@@ -63,9 +63,9 @@ const City = ({ isRotating, setIsRotating, ...props }) => {
         document.addEventListener('pointermove', handlePointerMove)
 
         return () => {
-            document.addEventListener('pointerdown', handlePointerDown)
-            document.addEventListener('pointerup', handlePointerUp)
-            document.addEventListener('pointermove', handlePointerMove)
+            document.removeEventListener('pointerdown', handlePointerDown)
+            document.removeEventListener('pointerup', handlePointerUp)
+            document.removeEventListener('pointermove', handlePointerMove)
         }
     }, [gl, handlePointerDown, handlePointerUp, handlePointerMove])
 
