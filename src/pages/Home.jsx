@@ -13,11 +13,11 @@ import City from '../models/City'
 //install react spring which works in conjuction with threejs to animate models
 const Home = () => {
 
-  const { isRotating, setIsRotating } = useState(false)
+  const [isRotating, setIsRotating]  = useState(false)
 
   const adjustCityForScreenSize = () => {
     let screenScale = null
-    let screenPosition = [-20, -6.5, -400]
+    let screenPosition = [-20, -6.5, -500]
     let rotation = [0.1, 4.7, 0]
 
     if (window.innerWidth < 768) {
