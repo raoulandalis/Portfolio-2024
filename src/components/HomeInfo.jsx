@@ -1,9 +1,19 @@
 import React from 'react'
 
-const HomeInfo = () => {
-  return (
-    <div>HomeInfo</div>
-  )
+const renderContent = {
+  1: (
+    <h1 className='text-red-500'>1</h1>
+  ),
+  2: (
+    <h1 className='text-red-500'>2</h1>
+  ),
+  3: (
+    <h1 className='text-red-500'>3</h1>
+  ),
+}
+
+const HomeInfo = ({currentStage}) => {
+  return renderContent[currentStage] || null
 }
 
 export default HomeInfo

@@ -59,39 +59,32 @@ const City = ({ isRotating, setIsRotating, setCurrentStage, ...props }) => {
     }
 
     useFrame(() => {
-        if(!isRotating) {
+        if (!isRotating) {
             rotationSpeed.current *= dampingFactor;
 
-            if(Math.abs(rotationSpeed.current) < 0.001) {
-                rotationSpeed.current = 0
+            if (Math.abs(rotationSpeed.current) < 0.001) {
+                rotationSpeed.current = 0;
             }
 
             cityRef.current.rotation.y += rotationSpeed.current;
-        } else {
+
+            // Determine the current stage based on the current rotation angle
             const rotation = cityRef.current.rotation.y;
+            const normalizedRotation = ((rotation % (2 * Math.PI)) + 2 * Math.PI) % (2 * Math.PI);
+            let currentStage = null;
 
-            const normalizedRotation =
-                ((rotation % (2 * Math.PI)) + 2 * Math.PI) % (2 * Math.PI);
+            if (normalizedRotation >= 4.1 && normalizedRotation <= 6.0) {
+                currentStage = 1; // Stage 3
+            } else if (normalizedRotation >= 2.1 && normalizedRotation <= 4.0) {
+                currentStage = 2; // Stage 2
+            } else if (normalizedRotation >= 0.0 && normalizedRotation <= 2.0) {
+                currentStage = 3; // Stage 1
+            } 
 
-            // Set the current stage based on the island's orientation
-            switch (true) {
-                case normalizedRotation >= 5.45 && normalizedRotation <= 5.85:
-                    setCurrentStage(4);
-                    break;
-                case normalizedRotation >= 0.85 && normalizedRotation <= 1.3:
-                    setCurrentStage(3);
-                    break;
-                case normalizedRotation >= 2.4 && normalizedRotation <= 2.6:
-                    setCurrentStage(2);
-                    break;
-                case normalizedRotation >= 4.25 && normalizedRotation <= 4.75:
-                    setCurrentStage(1);
-                    break;
-                default:
-                    setCurrentStage(null);
-            }
+            setCurrentStage(currentStage);
         }
-    })
+    });
+
 
     useEffect(() => {
         const canvas = gl.domElement
