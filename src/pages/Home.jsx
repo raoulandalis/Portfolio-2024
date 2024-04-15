@@ -3,9 +3,7 @@ import { Canvas, useLoader } from '@react-three/fiber'
 import Loader from '../components/Loader'
 
 import City from '../models/City'
-{/* <div className='absolute top-28 left-0 right-0 z-10 flex items-center justify-center'>
-        POPUP
-      </div> */}
+import HomeInfo from '../components/HomeInfo'
 //install threejs fiber - react renderer for threejs (allows you to use threejs in react)
 //all 3d scenes and lights are rendered within the Canvas component
 //suspense is a wrapper that displays a "fallback" that will display until the children are finished loading
@@ -14,6 +12,7 @@ import City from '../models/City'
 const Home = () => {
 
   const [isRotating, setIsRotating]  = useState(false)
+  const [currentStage, setCurrentStage] = useState(1)
 
   const adjustCityForScreenSize = () => {
     let screenScale = null
@@ -33,6 +32,9 @@ const Home = () => {
 
   return (
     <section className='w-full h-screen relative'>
+      <div className='absolute top-28 left-0 right-0 z-10 flex items-center justify-center text-red-100'>
+        {currentStage && <HomeInfo currentStage={currentStage}/>}
+      </div>
       <Canvas
         className={`w-full h-screen relative bg-black ${isRotating ? 'cursor-grabbing' : 'cursor-grab'}`}
         camera={{ near: 0.1, far: 1000 }}
@@ -48,6 +50,7 @@ const Home = () => {
             rotation={cityRotation}
             isRotating={isRotating}
             setIsRotating={setIsRotating}
+            setCurrentStage={setCurrentStage}
           />
         </Suspense>
       </Canvas>

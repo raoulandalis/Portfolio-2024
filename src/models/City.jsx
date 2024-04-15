@@ -13,7 +13,7 @@ import { a } from '@react-spring/three'
 
 import cityScene from '../assets_city/a_mysterious_adventure_-_3d_editor_challenge.glb'
 
-const City = ({ isRotating, setIsRotating, ...props }) => {
+const City = ({ isRotating, setIsRotating, setCurrentStage, ...props }) => {
     const cityRef = useRef()
 
     const { gl, viewport } = useThree()
