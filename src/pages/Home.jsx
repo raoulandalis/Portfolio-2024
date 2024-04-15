@@ -16,7 +16,7 @@ const Home = () => {
 
   const adjustCityForScreenSize = () => {
     let screenScale = null
-    let screenPosition = [-20, -6.5, -500]
+    let screenPosition = [-20, -50, -550]
     let rotation = [0.1, 4.7, 0]
 
     if (window.innerWidth < 768) {
