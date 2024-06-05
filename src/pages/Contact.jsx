@@ -1,5 +1,4 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React from 'react';
 
 const Contact = () => {
   return (
@@ -8,24 +7,26 @@ const Contact = () => {
         <h1 className='text-5xl flex justify-center mb-14'>Want to connect?</h1>
 
         <div className='flex flex-col items-center gap-6 text-2xl animate-slideUp'>
-          <section>Email</section>
           <section>
-            <Link to='https://www.linkedin.com/in/raoul-andalis/' target='_blank' className='hover:text-blue-500'>LinkedIn</Link>
+            <a href="mailto:raoulandalis@gmail.com" className="hover:text-blue-500">Email</a>
           </section>
           <section>
-            <Link to='https://github.com/raoulandalis' target='_blank' className='hover:text-blue-500'>GitHub</Link>
+            <a href='https://www.linkedin.com/in/raoul-andalis/' target='_blank' rel='noopener noreferrer' className='hover:text-blue-500'>LinkedIn</a>
           </section>
           <section>
-            <Link to='https://wellfound.com/u/raoul-andalis' target='_blank' className='hover:text-blue-500'>Wellfound</Link>
+            <a href='https://github.com/raoulandalis' target='_blank' rel='noopener noreferrer' className='hover:text-blue-500'>GitHub</a>
           </section>
           <section>
-            <Link to='https://docs.google.com/document/d/1dWfIp819j9MZ5EEpuV2iVjnFB1eBjZlgzOOCOKkmht0/edit?usp=sharing' target='_blank' className='hover:text-blue-500'>Resume</Link>
+            <a href='https://wellfound.com/u/raoul-andalis' target='_blank' rel='noopener noreferrer' className='hover:text-blue-500'>Wellfound</a>
+          </section>
+          <section>
+            <a href='https://docs.google.com/document/d/1dWfIp819j9MZ5EEpuV2iVjnFB1eBjZlgzOOCOKkmht0/edit?usp=sharing' target='_blank' rel='noopener noreferrer' className='hover:text-blue-500'>Resume</a>
           </section>
         </div>
 
       </div>
     </main>
-  )
-}
+  );
+};
 
-export default Contact
+export default Contact;
