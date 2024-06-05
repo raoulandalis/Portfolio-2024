@@ -7,11 +7,11 @@ const Projects = () => {
       <div className="max-w-4xl mx-auto mt-40 my-36">
         <h1 className='text-5xl flex justify-center mb-20'>Dive Into...</h1>
 
-        <section className='flex flex-col md:flex-row justify-around md:justify-between mb-8 md:mb-36'>
+        <section className='flex flex-col md:flex-row justify-around md:justify-between mb-8 md:mb-36 animate-slideUp'>
           <article className='flex flex-col md:flex-row gap-8 md:gap-36 items-center md:items-start'>
             <div className="md:w-1/2">
               <div className='flex flex-row gap-3'>
-                <h2 className='text-4xl flex items-center italic'>FearFace</h2>
+                <h2 className='text-4xl flex items-center italic text-blue-500'>FearFace</h2>
                 <div className='flex items-end'>
                   <a href='https://fearface.onrender.com/' target='_blank' className="hover:text-blue-500">
                     live
@@ -32,11 +32,11 @@ const Projects = () => {
           </article>
         </section>
 
-        <section className='flex flex-col md:flex-row justify-around md:justify-between mb-8 md:mb-36'>
+        <section className='flex flex-col md:flex-row justify-around md:justify-between mb-8 md:mb-36 animate-slideUp'>
           <article className='flex flex-col md:flex-row gap-8 md:gap-36 items-center md:items-start'>
             <div className="md:w-1/2">
               <div className='flex flex-row gap-3'>
-                <h2 className='text-4xl flex items-center italic'>Flix</h2>
+                <h2 className='text-4xl flex items-center italic text-blue-500'>Flix</h2>
                 <div className='flex items-end'>
                   <a href='https://flix-dyz2.onrender.com/' target='_blank' className="hover:text-blue-500">
                     live
@@ -57,11 +57,11 @@ const Projects = () => {
           </article>
         </section>
 
-        <section className='flex flex-col md:flex-row justify-around md:justify-between mb-8 md:mb-36'>
+        <section className='flex flex-col md:flex-row justify-around md:justify-between mb-8 md:mb-36 animate-slideUp'>
           <article className='flex flex-col md:flex-row gap-8 md:gap-36 items-center md:items-start'>
             <div className="md:w-1/2">
               <div className='flex flex-row gap-3'>
-                <h2 className='text-4xl flex items-center italic'>Valbnb</h2>
+                <h2 className='text-4xl flex items-center italic text-blue-500'>Valbnb</h2>
                 <div className='flex items-end'>
                   <a href='https://raoul-airbnb.onrender.com/' target='_blank' className="hover:text-blue-500">
                     live
@@ -84,7 +84,7 @@ const Projects = () => {
 
         <h1 className='text-5xl flex justify-center mb-16'>Skills</h1>
 
-        <section className='cursor-pointer'>
+        <section className='cursor-pointer animate-slideUp'>
           <h2 className='text-3xl'>Languages</h2>
           <div className='flex gap-5'>
             <p className='text-xl mt-4 border border-blue-500 p-2 hover:shadow-md'>JavaScript</p>
@@ -92,7 +92,7 @@ const Projects = () => {
           </div>
         </section>
 
-        <section className='cursor-pointer'>
+        <section className='cursor-pointer animate-slideUp'>
           <h2 className='text-3xl mt-10'>Front End</h2>
           <div className='flex gap-5'>
             <p className='text-xl mt-4 border border-blue-500 p-2 hover:shadow-md'>React</p>
@@ -103,7 +103,7 @@ const Projects = () => {
           </div>
         </section>
 
-        <section className='cursor-pointer'>
+        <section className='cursor-pointer animate-slideUp'>
           <h2 className='text-3xl mt-10'>Back End</h2>
           <div className='flex gap-5'>
             <p className='text-xl mt-4 border border-blue-500 p-2 hover:shadow-md'>Node.js</p>
