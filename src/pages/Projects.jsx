@@ -1,10 +1,10 @@
 import React from 'react'
 import Skills from './Skills'
-import { Link } from 'react-router-dom'
+import Arrow from '../components/Arrow'
 
 const Projects = () => {
   return (
-    <main className='w-full min-h-screen flex justify-center items-center bg-blue-100'>
+    <main className='w-full min-h-screen flex justify-center items-center bg-blue-200'>
       <div className="max-w-4xl mx-auto mt-40 my-36">
         <h1 className='text-5xl flex justify-center mb-20'>Dive Into...</h1>
 
@@ -85,7 +85,7 @@ const Projects = () => {
 
         <Skills/>
 
-
+        <Arrow/>
 
       </div>
     </main>

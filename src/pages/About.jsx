@@ -4,7 +4,7 @@ import Arrow from '../components/Arrow'
 const About = () => {
 
   return (
-    <main className='w-full min-h-screen flex justify-center items-center bg-blue-100'>
+    <main className='w-full min-h-screen flex justify-center items-center bg-blue-200'>
       <div className="max-w-4xl mx-auto mt-40 my-36">
         <h1 className='text-5xl flex justify-center mb-14'>Exploring My</h1>
         <section className='flex flex-col md:flex-row justify-around md:justify-between mb-8 md:mb-36 animate-slideUp'>
@@ -34,7 +34,7 @@ const About = () => {
         </section>
 
         <Arrow/>
-        
+
       </div>
     </main>
   )
