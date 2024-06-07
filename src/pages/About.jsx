@@ -1,5 +1,5 @@
 import React from 'react'
-import upArrow from '../assets_ar/upicon.gif'
+import Arrow from '../components/Arrow'
 
 const About = () => {
 
@@ -33,11 +33,7 @@ const About = () => {
           </article>
         </section>
 
-        <div>
-          <img
-          src='https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExdm9sbGN2M2tmd3BsemlkM2E0aW5sdWRjYW02OTlpbGR4bnlyZG0xdyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/IdBiAh2duAjpglhihh/giphy.gif' className='h-14'>
-          </img>
-        </div>
+        <Arrow/>
       </div>
     </main>
   )
