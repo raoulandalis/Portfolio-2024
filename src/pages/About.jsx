@@ -1,4 +1,5 @@
 import React from 'react'
+import upArrow from '../assets_ar/upicon.gif'
 
 const About = () => {
 
@@ -31,6 +32,12 @@ const About = () => {
             <p className="max-w-md">As I look ahead, I'm eager to make my mark in the tech world. I want to continue honing my skills, pushing myself to become an even stronger developer. But most importantly, I'm excited to keep learning and exploring new possibilities, because in this field, there's always something new to discover!</p>
           </article>
         </section>
+
+        <div>
+          <img
+          src='https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExdm9sbGN2M2tmd3BsemlkM2E0aW5sdWRjYW02OTlpbGR4bnlyZG0xdyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/IdBiAh2duAjpglhihh/giphy.gif' className='h-14'>
+          </img>
+        </div>
       </div>
     </main>
   )
