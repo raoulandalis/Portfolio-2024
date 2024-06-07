@@ -34,6 +34,7 @@ const About = () => {
         </section>
 
         <Arrow/>
+        
       </div>
     </main>
   )
