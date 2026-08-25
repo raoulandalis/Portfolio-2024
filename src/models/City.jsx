@@ -6,12 +6,25 @@ Source: https://sketchfab.com/3d-models/a-mysterious-adventure-3d-editor-challen
 Title: A Mysterious Adventure - 3D Editor Challenge
 */
 
-import React, { useRef, useEffect } from 'react'
+import React, { useRef, useEffect, useCallback } from 'react'
 import { useGLTF, useAnimations } from '@react-three/drei'
 import { useFrame, useThree } from '@react-three/fiber'
 import { a } from '@react-spring/three'
 
 import cityScene from '../assets_city/a_mysterious_adventure_-_3d_editor_challenge.glb'
+
+const TWO_PI = Math.PI * 2
+const STAGE_COUNT = 4
+const STAGE_ONE_START = 4.1
+const IDLE_SPEED = -0.002
+const MAX_ROTATION_SPEED = 0.1
+const DAMPING_FACTOR = 0.95
+
+export function stageFromRotation(y) {
+    const normalized = ((y % TWO_PI) + TWO_PI) % TWO_PI
+    const shifted = (normalized - STAGE_ONE_START + TWO_PI) % TWO_PI
+    return Math.floor(shifted / (TWO_PI / STAGE_COUNT)) + 1
+}
 
 const City = ({ isRotating, setIsRotating, setCurrentStage, ...props }) => {
     const cityRef = useRef()
@@ -22,82 +35,87 @@ const City = ({ isRotating, setIsRotating, setCurrentStage, ...props }) => {
 
     const lastX = useRef(0)
     const rotationSpeed = useRef(0)
-    const dampingFactor = 0.95
+    const isRotatingRef = useRef(isRotating)
+    const lastStage = useRef(null)
+    isRotatingRef.current = isRotating
 
-    const handlePointerDown = (e) => {
-        e.stopPropagation();
-        e.preventDefault();
-        setIsRotating(true);
+    const handlePointerDown = useCallback((e) => {
+        e.stopPropagation()
+        e.preventDefault()
+        gl.domElement.setPointerCapture(e.pointerId)
+        setIsRotating(true)
+        lastX.current = e.clientX
+    }, [gl, setIsRotating])
 
-        const clientX = e.touches ? e.touches[0].clientX : e.clientX;
-
-        lastX.current = clientX;
-    }
-
-    const handlePointerUp = (e) => {
-        e.stopPropagation();
-        e.preventDefault();
-        setIsRotating(false);
-    }
-
-    const maxRotationSpeed = 0.1
-
-    const handlePointerMove = (e) => {
-        e.stopPropagation();
-        e.preventDefault();
-
-        if(isRotating) {
-            const clientX = e.touches ? e.touches[0].clientX : e.clientX;
-
-            const delta = (clientX - lastX.current) / viewport.width
-
-            // cityRef.current.rotation.y += delta * 0.01 * Math.PI;
-            // lastX.current = clientX;
-            // rotationSpeed.current = delta * 0.01 * Math.PI;
-            rotationSpeed.current = Math.min(Math.max(delta * 0.01 * Math.PI, -maxRotationSpeed), maxRotationSpeed);
+    const handlePointerUp = useCallback((e) => {
+        e.stopPropagation()
+        e.preventDefault()
+        if (gl.domElement.hasPointerCapture(e.pointerId)) {
+            gl.domElement.releasePointerCapture(e.pointerId)
         }
-    }
+        setIsRotating(false)
+    }, [gl, setIsRotating])
+
+    const handleWindowPointerUp = useCallback((e) => {
+        if (!isRotatingRef.current) return
+        if (gl.domElement.hasPointerCapture(e.pointerId)) {
+            gl.domElement.releasePointerCapture(e.pointerId)
+        }
+        setIsRotating(false)
+    }, [gl, setIsRotating])
+
+    const handlePointerMove = useCallback((e) => {
+        e.stopPropagation()
+        e.preventDefault()
+        if (!isRotatingRef.current || !cityRef.current) return
+
+        const clientX = e.clientX
+        const delta = (clientX - lastX.current) / viewport.width
+        const step = delta * 0.01 * Math.PI
+        cityRef.current.rotation.y += step
+        lastX.current = clientX
+        rotationSpeed.current = Math.min(Math.max(step, -MAX_ROTATION_SPEED), MAX_ROTATION_SPEED)
+    }, [viewport.width])
 
     useFrame(() => {
+        if (!cityRef.current) return
+
         if (!isRotating) {
-            rotationSpeed.current *= dampingFactor;
-
+            rotationSpeed.current *= DAMPING_FACTOR
             if (Math.abs(rotationSpeed.current) < 0.001) {
-                rotationSpeed.current = 0;
+                rotationSpeed.current = 0
+                cityRef.current.rotation.y += IDLE_SPEED
+            } else {
+                cityRef.current.rotation.y += rotationSpeed.current
             }
-
-            cityRef.current.rotation.y += rotationSpeed.current;
-
-            // Determine the current stage based on the current rotation angle
-            const rotation = cityRef.current.rotation.y;
-            const normalizedRotation = ((rotation % (2 * Math.PI)) + 2 * Math.PI) % (2 * Math.PI);
-            let currentStage = null;
-
-            if (normalizedRotation >= 4.1 && normalizedRotation <= 6.0) {
-                currentStage = 1; // Stage 3
-            } else if (normalizedRotation >= 2.1 && normalizedRotation <= 4.0) {
-                currentStage = 2; // Stage 2
-            } else if (normalizedRotation >= 0.0 && normalizedRotation <= 2.0) {
-                currentStage = 3; // Stage 1
-            } 
-
-            setCurrentStage(currentStage);
         }
-    });
 
+        const nextStage = stageFromRotation(cityRef.current.rotation.y)
+        if (lastStage.current !== nextStage) {
+            lastStage.current = nextStage
+            setCurrentStage(nextStage)
+        }
+    })
 
     useEffect(() => {
         const canvas = gl.domElement
+        canvas.style.touchAction = 'none'
         canvas.addEventListener('pointerdown', handlePointerDown)
-        canvas.addEventListener('pointerup', handlePointerUp)
         canvas.addEventListener('pointermove', handlePointerMove)
+        canvas.addEventListener('pointerup', handlePointerUp)
+        canvas.addEventListener('pointercancel', handlePointerUp)
+        window.addEventListener('pointerup', handleWindowPointerUp)
+        window.addEventListener('pointercancel', handleWindowPointerUp)
 
         return () => {
             canvas.removeEventListener('pointerdown', handlePointerDown)
-            canvas.removeEventListener('pointerup', handlePointerUp)
             canvas.removeEventListener('pointermove', handlePointerMove)
+            canvas.removeEventListener('pointerup', handlePointerUp)
+            canvas.removeEventListener('pointercancel', handlePointerUp)
+            window.removeEventListener('pointerup', handleWindowPointerUp)
+            window.removeEventListener('pointercancel', handleWindowPointerUp)
         }
-    }, [gl, handlePointerDown, handlePointerUp, handlePointerMove])
+    }, [gl, handlePointerDown, handlePointerUp, handlePointerMove, handleWindowPointerUp])
 
     return (
         <a.group ref={cityRef} {...props}>

@@ -4,7 +4,7 @@ export const stages = {
     kicker: "Nice to meet you, I'm",
     name: 'Raoul',
     subtitle: 'Software Engineer.',
-    hint: 'click & drag',
+    hint: 'drag to look around',
   },
   2: {
     type: 'cta',
