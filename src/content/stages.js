@@ -3,7 +3,7 @@ export const stages = {
     type: 'intro',
     kicker: "Nice to meet you, I'm",
     name: 'Raoul',
-    subtitle: 'Software Engineer at Rikor.',
+    subtitle: 'Software Engineer.',
     hint: 'click & drag',
   },
   2: {

@@ -6,7 +6,7 @@ export const about = {
   },
   present: {
     heading: 'Present',
-    body: 'Software Engineer at Rikor (Junior Software Engineer Sep 2024 – Apr 2025; Software Engineer Apr 2025 – present). Full-stack work in production. I led Franchise Marketplace from architecture to deployment.',
+    body: 'Most recently Software Engineer at Rikor (Junior Sep 2024 – Apr 2025, then Engineer from Apr 2025). Full-stack work in production. I led Franchise Marketplace from architecture to deployment.',
   },
   future: {
     heading: 'Future',
