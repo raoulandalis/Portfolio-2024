@@ -1,0 +1,55 @@
+export const projects = [
+  {
+    id: 'leetrep',
+    title: 'LeetRep',
+    blurb: 'Spaced repetition for LeetCode: a journal plus spaced reps, not a feature dump.',
+    liveUrl: null, // unconfirmed
+    githubUrl: null, // unconfirmed
+    mediaUrl: null,
+    private: false,
+    listed: false,
+  },
+  {
+    id: 'franchise-marketplace',
+    title: 'Franchise Marketplace',
+    company: 'Rikor',
+    role: 'Software Engineer',
+    blurb: 'Led it from architecture to deployment.',
+    liveUrl: null,
+    githubUrl: null,
+    mediaUrl: null,
+    private: true,
+    listed: false,
+  },
+  {
+    id: 'fearface',
+    title: 'FearFace',
+    blurb: 'A team-developed, horror-themed social app where users can browse and post comments, interact with others, and explore a haunted marketplace featuring witty horror movie references. Horror fans will enjoy this playful and engaging community.',
+    liveUrl: 'https://fearface.onrender.com/',
+    githubUrl: 'https://github.com/jgodfrey324/FearFace',
+    mediaUrl: 'https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExcnd2dHJmaW5id3RiempzdWw1cGM2Mjl0cGJwMXlvaW9scmZiZTNpeCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/jEOocwutlskiTvgm2O/giphy.gif',
+    private: false,
+    listed: true,
+  },
+  {
+    id: 'flix',
+    title: 'Flix',
+    blurb: 'An independently made, movie-app for friend groups to upload, rate, and review movies. Movie-lovers can also categorize movies by creating curated playlists all while contributing to their own profile stats.',
+    liveUrl: 'https://flix-dyz2.onrender.com/',
+    githubUrl: 'https://github.com/raoulandalis/Flix',
+    mediaUrl: 'https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExYzh3OG9jMGFidnFtMHQ3aWowY3E0ZmZybWhpdzc4MHB6eTNiZWJqcyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/TZDBbWqlv74kNW7VMI/giphy.gif',
+    private: false,
+    listed: true,
+  },
+  {
+    id: 'valbnb',
+    title: 'Valbnb',
+    // PRD 4 may drop Valbnb (theme clone, weaker hiring signal). Confirm with Raoul.
+    blurb: 'An Airbnb-inspired app based on the theme of the popular game "Valorant", where gaming enthusiasts can create listings of locations they\'re renting out and leave reviews of places they\'ve visited.',
+    liveUrl: 'https://raoul-airbnb.onrender.com/',
+    githubUrl: 'https://github.com/raoulandalis/Valbnb',
+    mediaUrl: 'https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMDlsNnRhNWNjajNxb2RxbXNlM3p5Z3hrbnA3cjA0aHAxaWdiczFkOSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/tNHOL9qG3QMcvQ096W/giphy.gif',
+    private: false,
+    listed: true,
+  },
+]
