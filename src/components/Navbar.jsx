@@ -2,20 +2,23 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 import { site } from '../content/site'
 
+const linkClass = ({ isActive }) =>
+  isActive ? 'text-lantern' : 'text-fog hover:text-lantern-hot'
+
 const Navbar = () => {
   return (
     <header className='header'>
-      <NavLink to='/' className='w-60 h-20 items-center justify-center flex font-bold'>
-        <p className='blue-gradient_text text-2xl'>{site.name}</p>
+      <NavLink to='/' className='flex h-20 w-60 items-center justify-center font-semibold'>
+        <p className='text-xl font-semibold tracking-tight text-paper hover:text-lantern'>{site.name}</p>
       </NavLink>
-      <nav className='flex text-lg gap-7 font-medium'>
-        <NavLink to='/about' className={({isActive}) => isActive ? 'text-white' : 'text-blue-500'}>
+      <nav className='flex gap-7 text-lg font-medium'>
+        <NavLink to='/about' className={linkClass}>
           {site.nav.about}
         </NavLink>
-        <NavLink to='/projects' className={({ isActive }) => isActive ? 'text-white' : 'text-blue-500'}>
+        <NavLink to='/projects' className={linkClass}>
           {site.nav.work}
         </NavLink>
-        <NavLink to='/contact' className={({ isActive }) => isActive ? 'text-white' : 'text-blue-500'}>
+        <NavLink to='/contact' className={linkClass}>
           {site.nav.contact}
         </NavLink>
       </nav>
