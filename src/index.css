@@ -1,16 +1,27 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Work+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Work+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
+    --ink: #0b1018;
+    --ink-elevated: #121820;
+    --steel: #2a3544;
+    --fog: #8ba3b8;
+    --mist: #c5d4e0;
+    --paper: #e8eef4;
+    --lantern: #e8a44a;
+    --lantern-hot: #f0c36e;
+    --glass: rgba(11, 16, 24, 0.72);
     --blue-rgb: 237 245 255;
     --green-rgb: 125 161 35;
 }
 
 body {
-    font-family: "Work Sans", sans-serif;
+    font-family: "Instrument Sans", sans-serif;
+    background-color: var(--ink);
+    color: var(--mist);
 }
 
 body:has(.card[data-color="blue"]:hover) {
@@ -22,6 +33,20 @@ body:has(.card[data-color="green"]:hover) {
 }
 
 @layer utilities {
+    .panel-glass {
+        background: var(--glass);
+        @apply border border-steel text-paper;
+        border-radius: 2px;
+    }
+
+    .page-title {
+        @apply text-paper font-semibold tracking-tight text-4xl sm:text-5xl;
+    }
+
+    .label-kicker {
+        @apply text-xs uppercase tracking-[0.12em] text-fog;
+    }
+
     .max-container {
         @apply max-w-5xl mx-auto sm:p-16 pb-12 !pt-[126px] px-8 min-h-[calc(100vh-80px)];
     }

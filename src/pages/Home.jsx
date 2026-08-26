@@ -32,7 +32,7 @@ const Home = () => {
         <HomeInfo currentStage={currentStage} />
       </div>
       <Canvas
-        className={`w-full h-screen relative bg-gray-800 ${isRotating ? 'cursor-grabbing' : 'cursor-grab'}`}
+        className={`w-full h-screen relative bg-ink ${isRotating ? 'cursor-grabbing' : 'cursor-grab'}`}
         camera={{ near: 0.1, far: 1000 }}
       >
         <Suspense fallback={<Loader />}>
