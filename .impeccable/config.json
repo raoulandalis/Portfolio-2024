@@ -8,6 +8,15 @@
         "value": "instrument sans",
         "createdAt": "2026-08-26T17:12:45.512Z",
         "reason": "DESIGN.md locks Instrument Sans as the one typeface for the night-ink system"
+      },
+      {
+        "rule": "gradient-text",
+        "value": "*",
+        "files": [
+          "src/index.css"
+        ],
+        "createdAt": "2026-08-31T23:08:34.923Z",
+        "reason": "Unused leftover .blue-gradient_text from 2024; new reel uses solid lantern/paper"
       }
     ]
   }

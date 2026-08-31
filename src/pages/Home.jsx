@@ -6,7 +6,6 @@ import { projects } from '../content/projects'
 import { site } from '../content/site'
 import { skillGroups } from '../content/skills'
 import { useReveal } from '../hooks/useReveal'
-import '../reel.css'
 
 const listed = projects.filter((project) => project.listed)
 const marquee = about.future.body
@@ -22,7 +21,7 @@ const Home = () => {
   }, [location.hash])
 
   return (
-    <main className='bg-ink text-mist'>
+    <main className='min-h-screen bg-ink text-mist'>
       <div className='mx-auto max-w-5xl px-8 sm:px-16'>
       <section id='intro' className='scroll-mt-8 pt-12 pb-16 md:pt-16 md:pb-20'>
         <p className='label-kicker mb-4'>

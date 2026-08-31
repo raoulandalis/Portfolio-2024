@@ -8,18 +8,18 @@ export default {
     extend: {
       colors: {
         ink: {
-          DEFAULT: "#0b1018",
-          elevated: "#121820",
+          DEFAULT: "#f3f0e8",
+          elevated: "#e8e4d9",
         },
-        steel: "#2a3544",
-        fog: "#8ba3b8",
-        mist: "#c5d4e0",
-        paper: "#e8eef4",
+        steel: "#cfc8b8",
+        fog: "#6f6a62",
+        mist: "#3f3c38",
+        paper: "#161412",
         lantern: {
-          DEFAULT: "#e8a44a",
-          hot: "#f0c36e",
+          DEFAULT: "#8f5314",
+          hot: "#6e3f0e",
         },
-        glass: "rgba(11, 16, 24, 0.72)",
+        glass: "rgba(243, 240, 232, 0.86)",
         gray: {
           200: "#D5DAE1"
         },
