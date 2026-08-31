@@ -23,27 +23,26 @@ const Home = () => {
 
   return (
     <main className='bg-ink text-mist'>
-        <section className='flex min-h-[100svh] flex-col justify-end px-8 pb-28 pt-32 sm:px-16 md:pb-32'>
-        <p className='label-kicker mb-6'>
+      <div className='mx-auto max-w-5xl px-8 sm:px-16'>
+      <section id='intro' className='scroll-mt-8 pt-12 pb-16 md:pt-16 md:pb-20'>
+        <p className='label-kicker mb-4'>
+          {site.name}
+          <span className='mx-3 text-steel' aria-hidden>
+            ·
+          </span>
           {site.location}
           <span className='mx-3 text-steel' aria-hidden>
             ·
           </span>
           / creating since {site.creatingSince}
         </p>
-        <h1 className='max-w-[16ch] text-5xl font-semibold uppercase leading-[0.95] tracking-tight text-paper sm:text-6xl md:text-7xl'>
+        <h1 className='mb-8 max-w-[16ch] text-5xl font-semibold uppercase leading-[0.95] tracking-tight text-paper sm:text-6xl md:text-7xl'>
           {site.headline}
         </h1>
-      </section>
-
-      <section id='intro' className='scroll-mt-28 px-8 py-24 sm:px-16 md:py-32'>
-        <p className='label-kicker mb-6' data-reveal>
-          / intro
-        </p>
         <h2 className='page-title mb-10' data-reveal>
           Hey!
         </h2>
-        <div className='grid max-w-4xl gap-10 md:grid-cols-3 md:gap-12'>
+        <div className='grid gap-10 md:grid-cols-3 md:gap-12'>
           {[about.past, about.present, about.future].map((beat) => (
             <div key={beat.heading} data-reveal>
               <h3 className='label-kicker mb-3'>{beat.heading}</h3>
@@ -60,14 +59,14 @@ const Home = () => {
         </div>
       </div>
 
-      <section id='work' className='scroll-mt-28 px-8 py-24 sm:px-16 md:py-32'>
+      <section id='work' className='scroll-mt-8 py-16 md:py-20'>
         <p className='label-kicker mb-6' data-reveal>
           / work
         </p>
         <h2 className='page-title mb-16' data-reveal>
           Featured
         </h2>
-        <div className='mx-auto flex max-w-5xl flex-col gap-20 md:gap-28'>
+        <div className='flex flex-col gap-20 md:gap-28'>
           {listed.map((project) => (
             <article
               key={project.id}
@@ -129,14 +128,14 @@ const Home = () => {
         </div>
       </section>
 
-      <section className='px-8 py-24 sm:px-16 md:py-32'>
+      <section className='py-16 md:py-20'>
         <p className='label-kicker mb-6' data-reveal>
           / how I work
         </p>
         <h2 className='page-title mb-12' data-reveal>
           Skills
         </h2>
-        <div className='grid max-w-4xl gap-10 md:grid-cols-3'>
+        <div className='grid gap-10 md:grid-cols-3'>
           {skillGroups.map((group) => (
             <div key={group.id} data-reveal>
               <h3 className='label-kicker mb-4'>{group.label}</h3>
@@ -155,7 +154,7 @@ const Home = () => {
         </div>
       </section>
 
-      <section id='contact' className='scroll-mt-28 px-8 py-24 sm:px-16 md:py-32'>
+      <section id='contact' className='scroll-mt-8 py-16 md:py-20'>
         <p className='label-kicker mb-6' data-reveal>
           / contact
         </p>
@@ -204,10 +203,11 @@ const Home = () => {
         </ul>
       </section>
 
-      <footer className='flex flex-col gap-2 border-t border-steel px-8 py-10 text-sm text-fog sm:flex-row sm:items-center sm:justify-between sm:px-16'>
+      <footer className='flex flex-col gap-2 border-t border-steel py-10 text-sm text-fog sm:flex-row sm:items-center sm:justify-between'>
         <p>{site.name}</p>
         <p>{site.headline}</p>
       </footer>
+      </div>
     </main>
   )
 }
