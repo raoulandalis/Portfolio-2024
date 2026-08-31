@@ -11,5 +11,6 @@ export const site = {
     junior: { title: 'Junior Software Engineer', start: 'Sep 2024', end: 'Apr 2025' },
     engineer: { title: 'Software Engineer', start: 'Apr 2025', end: null },
   },
+  creatingSince: '2023',
   nav: { about: 'About', work: 'Work', contact: 'Contact' },
 }
