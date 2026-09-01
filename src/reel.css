@@ -49,7 +49,7 @@ body {
 }
 
 .reel-form {
-    border: 2px solid var(--mist) !important;
+    border: 1px solid var(--steel) !important;
     border-radius: 2px;
     background-color: var(--ink-elevated);
 }
