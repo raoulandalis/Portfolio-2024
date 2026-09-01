@@ -46,14 +46,20 @@ const ContactForm = () => {
 
   if (status === 'sent') {
     return (
-      <p className='text-base leading-relaxed text-mist md:text-lg' role='status'>
+      <p
+        className='reel-form px-6 py-8 text-base leading-relaxed text-mist md:px-8 md:text-lg'
+        role='status'
+      >
         {form.sent}
       </p>
     )
   }
 
   return (
-    <form className='flex flex-col gap-8' onSubmit={onSubmit}>
+    <form
+      className='reel-form flex flex-col gap-6 p-6 md:gap-8 md:p-8'
+      onSubmit={onSubmit}
+    >
       <input
         type='checkbox'
         name='botcheck'

@@ -44,6 +44,16 @@ body {
     border-color: var(--steel) !important;
 }
 
+.border-fog {
+    border-color: var(--fog) !important;
+}
+
+.reel-form {
+    border: 2px solid var(--mist) !important;
+    border-radius: 2px;
+    background-color: var(--ink-elevated);
+}
+
 .text-paper {
     color: var(--paper) !important;
 }
@@ -111,21 +121,21 @@ button:disabled.text-lantern {
     display: block;
     width: 100%;
     appearance: none;
-    border: 0;
-    border-bottom: 1px solid var(--steel);
-    border-radius: 0;
-    background: transparent;
+    border: 1px solid var(--steel);
+    border-radius: 2px;
+    background: var(--ink);
     caret-color: var(--lantern);
     color: var(--paper);
     font: inherit;
     font-size: 1.125rem;
     line-height: 1.5;
-    padding: 0.5rem 0 0.75rem;
+    padding: 0.65rem 0.75rem;
 }
 
 .reel-field:focus {
-    outline: none;
-    border-bottom-color: var(--lantern);
+    outline: 2px solid var(--lantern);
+    outline-offset: 2px;
+    border-color: var(--lantern);
 }
 
 .reel-field:disabled {
