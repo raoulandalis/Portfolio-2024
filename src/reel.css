@@ -1,0 +1,142 @@
+:root {
+    --ink: #f3f0e8;
+    --ink-elevated: #e8e4d9;
+    --steel: #cfc8b8;
+    --fog: #6f6a62;
+    --mist: #3f3c38;
+    --paper: #161412;
+    --lantern: #8f5314;
+    --lantern-hot: #6e3f0e;
+    --glass: rgba(243, 240, 232, 0.86);
+}
+
+html {
+    color-scheme: light;
+    background-color: var(--ink);
+    scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+}
+
+::selection {
+    background: var(--lantern);
+    color: var(--paper);
+}
+
+body {
+    background-color: var(--ink);
+    color: var(--mist);
+}
+
+.bg-ink {
+    background-color: var(--ink) !important;
+}
+
+.bg-ink-elevated {
+    background-color: var(--ink-elevated) !important;
+}
+
+.border-steel {
+    border-color: var(--steel) !important;
+}
+
+.text-paper {
+    color: var(--paper) !important;
+}
+
+.text-mist {
+    color: var(--mist) !important;
+}
+
+.text-fog {
+    color: var(--fog) !important;
+}
+
+.text-steel {
+    color: var(--steel) !important;
+}
+
+.text-lantern {
+    color: var(--lantern) !important;
+}
+
+.text-lantern-hot {
+    color: var(--lantern-hot) !important;
+}
+
+.page-title {
+    color: var(--paper) !important;
+}
+
+.label-kicker {
+    color: var(--fog) !important;
+}
+
+.hover\:text-paper:hover,
+.focus-visible\:text-paper:focus-visible {
+    color: var(--paper) !important;
+}
+
+.hover\:text-lantern:hover,
+.focus-visible\:text-lantern:focus-visible {
+    color: var(--lantern) !important;
+}
+
+.hover\:text-lantern-hot:hover,
+.focus-visible\:text-lantern-hot:focus-visible {
+    color: var(--lantern-hot) !important;
+}
+
+[data-reveal] {
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 0.35s ease-out, transform 0.35s ease-out;
+}
+
+[data-reveal].is-revealed {
+    opacity: 1;
+    transform: none;
+}
+
+.marquee {
+    overflow: hidden;
+}
+
+.marquee-track {
+    display: flex;
+    width: max-content;
+    animation: reel-marquee 36s linear infinite;
+}
+
+.marquee-track span {
+    padding-right: 4rem;
+    font-size: 1.125rem;
+    letter-spacing: 0.02em;
+    color: var(--fog);
+    white-space: nowrap;
+}
+
+@keyframes reel-marquee {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    [data-reveal] {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+
+    .marquee-track {
+        animation: none;
+    }
+}

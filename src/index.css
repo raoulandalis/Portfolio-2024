@@ -5,17 +5,22 @@
 @tailwind utilities;
 
 :root {
-    --ink: #0b1018;
-    --ink-elevated: #121820;
-    --steel: #2a3544;
-    --fog: #8ba3b8;
-    --mist: #c5d4e0;
-    --paper: #e8eef4;
-    --lantern: #e8a44a;
-    --lantern-hot: #f0c36e;
-    --glass: rgba(11, 16, 24, 0.72);
+    --ink: #f3f0e8;
+    --ink-elevated: #e8e4d9;
+    --steel: #cfc8b8;
+    --fog: #6f6a62;
+    --mist: #3f3c38;
+    --paper: #161412;
+    --lantern: #8f5314;
+    --lantern-hot: #6e3f0e;
+    --glass: rgba(243, 240, 232, 0.86);
     --blue-rgb: 237 245 255;
     --green-rgb: 125 161 35;
+}
+
+html {
+    color-scheme: light;
+    background-color: var(--ink);
 }
 
 body {

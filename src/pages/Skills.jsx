@@ -2,22 +2,26 @@ import React from 'react'
 import { skillGroups } from '../content/skills'
 
 const Skills = () => {
-    return (
-        <div>
-            <h1 className='text-5xl flex justify-center mb-16 text-blue-500'>Skills</h1>
-
-            {skillGroups.map((group, index) => (
-                <section key={group.id} className='cursor-pointer animate-slideUp'>
-                    <h2 className={`text-3xl text-blue-500${index > 0 ? ' mt-10' : ''}`}>{group.label}</h2>
-                    <div className='flex gap-5'>
-                        {group.items.map((item) => (
-                            <p key={item} className='text-xl mt-4 border border-blue-500 p-2 hover:shadow-md text-white'>{item}</p>
-                        ))}
-                    </div>
-                </section>
+  return (
+    <div className='mt-24'>
+      <h2 className='page-title mb-12 text-center'>Skills</h2>
+      {skillGroups.map((group) => (
+        <section key={group.id} className='mb-10 last:mb-0'>
+          <h3 className='label-kicker mb-4'>{group.label}</h3>
+          <ul className='flex flex-wrap gap-2'>
+            {group.items.map((item) => (
+              <li
+                key={item}
+                className='rounded-[2px] border border-steel bg-ink-elevated px-3 py-1.5 text-sm text-mist'
+              >
+                {item}
+              </li>
             ))}
-        </div>
-    )
+          </ul>
+        </section>
+      ))}
+    </div>
+  )
 }
 
 export default Skills
