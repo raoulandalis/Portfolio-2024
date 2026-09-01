@@ -5,6 +5,7 @@ import { contact } from '../content/contact'
 import { projects } from '../content/projects'
 import { site } from '../content/site'
 import { skillGroups } from '../content/skills'
+import ContactForm from '../components/ContactForm'
 import { useReveal } from '../hooks/useReveal'
 
 const listed = projects.filter((project) => project.listed)
@@ -160,46 +161,49 @@ const Home = () => {
         <h2 className='page-title mb-10' data-reveal>
           Let’s talk.
         </h2>
-        <ul className='flex flex-col gap-4 text-xl text-paper md:text-2xl' data-reveal>
-          <li>
-            <a
-              href={`mailto:${contact.email}`}
-              className='text-lantern hover:text-lantern-hot focus-visible:outline-none focus-visible:text-lantern-hot'
-            >
-              {contact.email}
-            </a>
-          </li>
-          <li>
-            <a
-              href={contact.linkedin.url}
-              target='_blank'
-              rel='noopener noreferrer'
-              className='text-fog hover:text-paper focus-visible:outline-none focus-visible:text-paper'
-            >
-              {contact.linkedin.label}
-            </a>
-          </li>
-          <li>
-            <a
-              href={contact.github.url}
-              target='_blank'
-              rel='noopener noreferrer'
-              className='text-fog hover:text-paper focus-visible:outline-none focus-visible:text-paper'
-            >
-              {contact.github.label}
-            </a>
-          </li>
-          <li>
-            <a
-              href={contact.resume.url}
-              target='_blank'
-              rel='noopener noreferrer'
-              className='text-fog hover:text-paper focus-visible:outline-none focus-visible:text-paper'
-            >
-              {contact.resume.label}
-            </a>
-          </li>
-        </ul>
+        <div className='grid gap-12 md:grid-cols-2 md:items-start md:gap-16' data-reveal>
+          <ContactForm />
+          <ul className='flex flex-col gap-4 text-xl text-paper md:text-2xl'>
+            <li>
+              <a
+                href={`mailto:${contact.email}`}
+                className='text-lantern hover:text-lantern-hot focus-visible:outline-none focus-visible:text-lantern-hot'
+              >
+                {contact.email}
+              </a>
+            </li>
+            <li>
+              <a
+                href={contact.linkedin.url}
+                target='_blank'
+                rel='noopener noreferrer'
+                className='text-fog hover:text-paper focus-visible:outline-none focus-visible:text-paper'
+              >
+                {contact.linkedin.label}
+              </a>
+            </li>
+            <li>
+              <a
+                href={contact.github.url}
+                target='_blank'
+                rel='noopener noreferrer'
+                className='text-fog hover:text-paper focus-visible:outline-none focus-visible:text-paper'
+              >
+                {contact.github.label}
+              </a>
+            </li>
+            <li>
+              <a
+                href={contact.resume.url}
+                target='_blank'
+                rel='noopener noreferrer'
+                className='text-fog hover:text-paper focus-visible:outline-none focus-visible:text-paper'
+              >
+                {contact.resume.label}
+              </a>
+            </li>
+          </ul>
+        </div>
       </section>
 
       <footer className='flex flex-col gap-2 border-t border-steel py-10 text-sm text-fog sm:flex-row sm:items-center sm:justify-between'>

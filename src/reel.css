@@ -44,6 +44,16 @@ body {
     border-color: var(--steel) !important;
 }
 
+.border-fog {
+    border-color: var(--fog) !important;
+}
+
+.reel-form {
+    border: 2px solid var(--mist) !important;
+    border-radius: 2px;
+    background-color: var(--ink-elevated);
+}
+
 .text-paper {
     color: var(--paper) !important;
 }
@@ -91,6 +101,11 @@ body {
     color: var(--lantern-hot) !important;
 }
 
+.disabled\:text-fog:disabled,
+button:disabled.text-lantern {
+    color: var(--fog) !important;
+}
+
 [data-reveal] {
     opacity: 0;
     transform: translateY(12px);
@@ -100,6 +115,41 @@ body {
 [data-reveal].is-revealed {
     opacity: 1;
     transform: none;
+}
+
+.reel-field {
+    display: block;
+    width: 100%;
+    appearance: none;
+    border: 1px solid var(--steel);
+    border-radius: 2px;
+    background: var(--ink);
+    caret-color: var(--lantern);
+    color: var(--paper);
+    font: inherit;
+    font-size: 1.125rem;
+    line-height: 1.5;
+    padding: 0.65rem 0.75rem;
+}
+
+.reel-field:focus {
+    outline: 2px solid var(--lantern);
+    outline-offset: 2px;
+    border-color: var(--lantern);
+}
+
+.reel-field:disabled {
+    color: var(--fog);
+    cursor: wait;
+}
+
+.reel-field:-webkit-autofill,
+.reel-field:-webkit-autofill:hover,
+.reel-field:-webkit-autofill:focus {
+    -webkit-text-fill-color: var(--paper);
+    box-shadow: 0 0 0 1000px var(--ink) inset;
+    caret-color: var(--lantern);
+    transition: background-color 9999s ease-out;
 }
 
 .marquee {

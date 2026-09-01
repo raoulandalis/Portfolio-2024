@@ -6,7 +6,16 @@ export const contact = {
   wellfound: { label: 'Wellfound', url: 'https://wellfound.com/u/raoul-andalis' },
   resume: {
     label: 'Resume',
-    url: 'https://docs.google.com/document/d/1dWfIp819j9MZ5EEpuV2iVjnFB1eBjZlgzOOCOKkmht0/edit?usp=sharing',
-    stale: true, // Google Doc is stale (stops at 2023). PRD 5 ships a current PDF.
+    url: 'https://docs.google.com/document/d/1fwIkdVd-3rW8IYOGsYMO2074muzlczRmP8AYyNmGm08/edit?usp=sharing',
+    stale: true, 
+  },
+  form: {
+    emailLabel: 'Your email',
+    subjectLabel: 'Subject',
+    messageLabel: 'Message',
+    submit: 'send',
+    sending: 'sending',
+    sent: 'Sent. I will get back to you.',
+    error: 'Could not send. Email me instead.',
   },
 }
