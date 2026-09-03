@@ -117,6 +117,132 @@ button:disabled.text-lantern {
     transform: none;
 }
 
+.year-line {
+    position: relative;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.year-line::before {
+    content: '';
+    position: absolute;
+    top: 0.55rem;
+    bottom: 0.55rem;
+    left: 50%;
+    width: 1px;
+    transform: translateX(-50%);
+    background: var(--steel);
+}
+
+.year-beat {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 1.25rem minmax(0, 1fr);
+    align-items: start;
+    padding-bottom: 2.75rem;
+}
+
+.year-beat:last-child {
+    padding-bottom: 0;
+}
+
+.year-meta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding-right: 0.85rem;
+    text-align: right;
+    container-type: inline-size;
+}
+
+.year-mark {
+    margin: 0;
+    color: var(--fog);
+    font-size: 0.8125rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    line-height: 1.4;
+    text-transform: uppercase;
+    font-variant-numeric: tabular-nums;
+    transition: color 0.35s ease-out;
+}
+
+.year-role {
+    margin: 0.35rem 0 0;
+    color: var(--mist);
+    font-size: clamp(0.8125rem, 7.6cqi, 1.875rem);
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    line-height: 1.2;
+    white-space: nowrap;
+    transition: color 0.35s ease-out;
+}
+
+.year-kind {
+    margin: 0.3rem 0 0;
+    color: var(--fog);
+    font-size: clamp(0.6875rem, 4.8cqi, 1.0625rem);
+    font-weight: 400;
+    letter-spacing: 0.01em;
+    line-height: 1.3;
+    white-space: nowrap;
+}
+
+.year-dot {
+    z-index: 1;
+    width: 0.4rem;
+    height: 0.4rem;
+    margin-top: 0.4rem;
+    justify-self: center;
+    border-radius: 2px;
+    background: var(--steel);
+    transition: background-color 0.35s ease-out;
+}
+
+.year-body {
+    margin: 0;
+    padding-left: 0.85rem;
+    color: var(--mist);
+    font-size: 1rem;
+    line-height: 1.625;
+}
+
+.year-beat.is-current .year-mark {
+    color: var(--lantern) !important;
+}
+
+.year-beat.is-current .year-role {
+    color: var(--paper) !important;
+}
+
+.year-beat.is-current .year-dot {
+    background: var(--lantern);
+}
+
+@media (min-width: 768px) {
+    .year-beat {
+        grid-template-columns: minmax(0, 1fr) 1.5rem minmax(0, 1fr);
+        padding-bottom: 3.5rem;
+    }
+
+    .year-meta {
+        padding-right: 1.5rem;
+    }
+
+    .year-mark {
+        font-size: 0.875rem;
+    }
+
+    .year-kind {
+        font-size: 1.0625rem;
+    }
+
+    .year-body {
+        padding-left: 1.5rem;
+        font-size: 1.125rem;
+    }
+}
+
 .reel-field {
     display: block;
     width: 100%;
@@ -200,6 +326,11 @@ button:disabled.text-lantern {
     display: flex;
     width: max-content;
     animation: reel-marquee 36s linear infinite;
+    animation-play-state: paused;
+}
+
+.marquee.is-running .marquee-track {
+    animation-play-state: running;
 }
 
 .marquee-track span {
@@ -286,5 +417,11 @@ button:disabled.text-lantern {
 
     .portrait-frame.is-revealed img {
         animation: none;
+    }
+
+    .year-mark,
+    .year-role,
+    .year-dot {
+        transition: none;
     }
 }

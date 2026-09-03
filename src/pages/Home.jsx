@@ -8,14 +8,16 @@ import { skillGroups } from '../content/skills'
 import ContactForm from '../components/ContactForm'
 import { useLanternLamp } from '../hooks/useLanternLamp'
 import { useReveal } from '../hooks/useReveal'
+import { useYearLine } from '../hooks/useYearLine'
 
 const listed = projects.filter((project) => project.listed)
-const marquee = about.future.body
+const marquee = about.marquee
 
 const Home = () => {
   const location = useLocation()
   useReveal()
   useLanternLamp()
+  useYearLine()
 
   useEffect(() => {
     if (!location.hash) return
@@ -41,7 +43,7 @@ const Home = () => {
           </span>
           / creating since {site.creatingSince}
         </p>
-        <div className='mb-8 flex flex-col gap-8 md:mb-10 md:flex-row md:items-center md:justify-between md:gap-12'>
+        <div className='mb-12 flex flex-col gap-8 md:mb-16 md:flex-row md:items-center md:justify-between md:gap-12'>
           <h1 className='max-w-[16ch] text-5xl font-semibold uppercase leading-[0.95] tracking-tight text-paper sm:text-6xl md:text-7xl'>
             {site.headline}
           </h1>
@@ -54,17 +56,19 @@ const Home = () => {
             />
           </figure>
         </div>
-        <h2 className='page-title mb-10' data-reveal>
-          Hey!
-        </h2>
-        <div className='grid gap-10 md:grid-cols-3 md:gap-12'>
-          {[about.past, about.present, about.future].map((beat) => (
-            <div key={beat.heading} data-reveal>
-              <h3 className='label-kicker mb-3'>{beat.heading}</h3>
-              <p className='text-base leading-relaxed text-mist md:text-lg'>{beat.body}</p>
-            </div>
+        <ol className='year-line' aria-label='Timeline'>
+          {about.years.map((beat) => (
+            <li key={beat.id} className='year-beat' data-year data-reveal>
+              <div className='year-meta'>
+                <p className='year-mark'>{beat.year}</p>
+                <p className='year-role'>{beat.title}</p>
+                <p className='year-kind'>{beat.kind}</p>
+              </div>
+              <span className='year-dot' aria-hidden />
+              <p className='year-body'>{beat.body}</p>
+            </li>
           ))}
-        </div>
+        </ol>
       </section>
 
       <div className='marquee border-y border-steel py-4' aria-hidden>
