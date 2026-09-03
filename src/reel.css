@@ -152,6 +152,52 @@ button:disabled.text-lantern {
     transition: background-color 9999s ease-out;
 }
 
+.portrait-frame {
+    margin: 0;
+    width: 11rem;
+    height: 11rem;
+    flex-shrink: 0;
+    overflow: hidden;
+    border: 1px solid var(--steel);
+    border-radius: 50%;
+    background: var(--ink-elevated);
+}
+
+@media (min-width: 768px) {
+    .portrait-frame {
+        width: 15rem;
+        height: 15rem;
+    }
+}
+
+.portrait-frame img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform-origin: 50% 42%;
+}
+
+.portrait-frame.is-revealed img {
+    animation: portrait-idle 16s ease-in-out infinite;
+}
+
+.portrait-frame:hover img {
+    animation: none;
+    transform: scale(1.05);
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes portrait-idle {
+    0%,
+    100% {
+        transform: scale(1) translateY(0);
+    }
+    50% {
+        transform: scale(1.035) translateY(-4px);
+    }
+}
+
 .marquee {
     overflow: hidden;
 }
@@ -188,5 +234,14 @@ button:disabled.text-lantern {
 
     .marquee-track {
         animation: none;
+    }
+
+    .portrait-frame.is-revealed img {
+        animation: none;
+    }
+
+    .portrait-frame:hover img {
+        transform: none;
+        transition: none;
     }
 }

@@ -36,9 +36,19 @@ const Home = () => {
           </span>
           / creating since {site.creatingSince}
         </p>
-        <h1 className='mb-8 max-w-[16ch] text-5xl font-semibold uppercase leading-[0.95] tracking-tight text-paper sm:text-6xl md:text-7xl'>
-          {site.headline}
-        </h1>
+        <div className='mb-8 flex flex-col gap-8 md:mb-10 md:flex-row md:items-center md:justify-between md:gap-12'>
+          <h1 className='max-w-[16ch] text-5xl font-semibold uppercase leading-[0.95] tracking-tight text-paper sm:text-6xl md:text-7xl'>
+            {site.headline}
+          </h1>
+          <figure className='portrait-frame mx-auto md:mx-0' data-reveal>
+            <img
+              src={site.headshot.src}
+              alt={site.headshot.alt}
+              width='819'
+              height='819'
+            />
+          </figure>
+        </div>
         <h2 className='page-title mb-10' data-reveal>
           Hey!
         </h2>
