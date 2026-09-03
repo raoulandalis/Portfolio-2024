@@ -12,5 +12,6 @@ export const site = {
     engineer: { title: 'Software Engineer', start: 'Apr 2025', end: null },
   },
   creatingSince: '2023',
+  headshot: { src: '/raoul.png', alt: 'Raoul Andalis' },
   nav: { about: 'About', work: 'Work', contact: 'Contact' },
 }
