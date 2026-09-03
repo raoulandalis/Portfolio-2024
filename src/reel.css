@@ -182,12 +182,6 @@ button:disabled.text-lantern {
     animation: portrait-idle 16s ease-in-out infinite;
 }
 
-.portrait-frame:hover img {
-    animation: none;
-    transform: scale(1.05);
-    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
 @keyframes portrait-idle {
     0%,
     100% {
@@ -225,6 +219,60 @@ button:disabled.text-lantern {
     }
 }
 
+.lantern-lamp {
+    position: fixed;
+    inset: 0;
+    z-index: 40;
+    pointer-events: none;
+    overflow: hidden;
+    opacity: 0;
+    mix-blend-mode: multiply;
+    transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.lantern-lamp.is-on {
+    opacity: 1;
+}
+
+.lantern-lamp-glow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 38rem;
+    height: 38rem;
+    border-radius: 50%;
+    background: radial-gradient(
+        circle,
+        rgb(143 83 20 / 0.22) 0%,
+        rgb(143 83 20 / 0.08) 38%,
+        transparent 70%
+    );
+    opacity: 0.9;
+    transform: translate3d(-50%, -50%, 0);
+}
+
+.lantern-lamp.is-on .lantern-lamp-glow {
+    will-change: transform;
+}
+
+.lantern-lamp.is-hot .lantern-lamp-glow {
+    opacity: 1;
+    width: 24rem;
+    height: 24rem;
+}
+
+@media (prefers-reduced-motion: reduce), (hover: none) {
+    .lantern-lamp {
+        display: none;
+    }
+}
+
+@media print {
+    .lantern-lamp {
+        display: none;
+    }
+}
+
 @media (prefers-reduced-motion: reduce) {
     [data-reveal] {
         opacity: 1;
@@ -238,10 +286,5 @@ button:disabled.text-lantern {
 
     .portrait-frame.is-revealed img {
         animation: none;
-    }
-
-    .portrait-frame:hover img {
-        transform: none;
-        transition: none;
     }
 }
